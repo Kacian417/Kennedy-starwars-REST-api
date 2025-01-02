@@ -119,16 +119,16 @@ class Favorites(db.Model):
     character_id = db.Column(db.Integer, db.ForeignKey('characters.id'), nullable=True)
     character = db.relationship(Character)
 
-    #planet_id = db.Column(db.Integer, db.ForeignKey('Planet.id'), nullable=True)
-    #planet = db.relationship(Planet)
+    planet_id = db.Column(db.Integer, db.ForeignKey('planets.id'), nullable=True)
+    planet = db.relationship(Planet)
 
-    #vehicle_id = db.Column(db.Integer, db.ForeignKey('Vehicle.id'), nullable=True)
-    #vehicle = db.relationship(Vehicle)
+    vehicle_id = db.Column(db.Integer, db.ForeignKey('vehicles.id'), nullable=True)
+    vehicle = db.relationship(Vehicle)
 
     def serialize(self):
         return {
             "id": self.user_id,
             "character_id": self.character_id,
-            #"planet_id": self.planet_id,
-            #"vehicle_id": self.vehicle_id,
+            "planet_id": self.planet_id,
+            "vehicle_id": self.vehicle_id,
         }
