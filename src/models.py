@@ -32,7 +32,7 @@ class User(db.Model):
     phone_number = db.Column(db.String, unique=False, nullable=True)
 
     def __repr__(self):
-        return '<User %r>' % self.username
+        return '<User %r>' % self.email
 
     def serialize(self):
         return {
@@ -59,6 +59,9 @@ class Planet(db.Model):
     def to_dict(self):
         return {}
     
+    def __repr__(self):
+        return '<Planet %r>' % self.planet_name
+    
     def serialize(self):
         return {
             "id":self.id,
@@ -81,6 +84,10 @@ class Character(db.Model):
 
     def to_dict(self):
         return {}  
+    
+    def __repr__(self):
+        return '<Character %r>' % self.character_name
+    
     def serialize(self):
         return {
             "id":self.id,
@@ -98,15 +105,19 @@ class Vehicle(db.Model):
     #length = db.Column(db.String, unique=False, nullable=False)
     #crew = db.Column(db.String, unique=False, nullable=False)
     #films = db.Column(db.String, unique=False, nullable=False)
-    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
-    user = db.relationship(User)
+    #user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+    #user = db.relationship(User)
 
     def to_dict(self):
         return {}  
+    
+    def __repr__(self):
+        return '<Vehicle %r>' % self.vehicle_name
+    
     def serialize(self):
         return {
             "id":self.id,
-            "name": self.name,
+            "vehicle_name": self.vehicle_name,
             "model": self.model,
             } 
     
